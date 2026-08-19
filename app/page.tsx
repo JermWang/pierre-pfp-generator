@@ -9,7 +9,8 @@ const heads = [
 ];
 const things = ["1","2","4","5","6","7","8","9","10","11","12","13","14","15"];
 const colors = ["#232323", "#f6ead2", "#e8903d"];
-const baseCharacter = "/characters/base-pierre-v2.png";
+const baseCharacter = "/characters/base-pierre-v4.png";
+const mustacheTrait = "/characters/faces/face-mustache.png";
 
 function loadImage(src: string) {
   return new Promise<HTMLImageElement>((resolve, reject) => {
@@ -22,8 +23,9 @@ function loadImage(src: string) {
 
 export default function Home() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [tab, setTab] = useState<"head" | "thing" | "text">("head");
+  const [tab, setTab] = useState<"head" | "face" | "thing" | "text">("head");
   const [head, setHead] = useState<string | null>(null);
+  const [mustache, setMustache] = useState(false);
   const [thing, setThing] = useState<string | null>(null);
   const [caption, setCaption] = useState("");
   const [ink, setInk] = useState("#000000");
@@ -38,6 +40,7 @@ export default function Home() {
     const base = await loadImage(baseCharacter);
     ctx.drawImage(base, 0, 0, 500, 500);
     if (head) ctx.drawImage(await loadImage(`/characters/heads/head-${head}.png`), 0, 0, 500, 500);
+    if (mustache) ctx.drawImage(await loadImage(mustacheTrait), 0, 0, 500, 500);
     if (thing) ctx.drawImage(await loadImage(`/characters/things/thing-${thing}.png`), 0, 0, 500, 500);
     if (caption.trim()) {
       ctx.font = "40px 'Courier New', Courier, monospace";
@@ -46,7 +49,7 @@ export default function Home() {
       ctx.fillStyle = ink;
       ctx.fillText(caption.trim().slice(0, 28), 250, 20, 455);
     }
-  }, [head, thing, caption, ink]);
+  }, [head, mustache, thing, caption, ink]);
 
   useEffect(() => { void render(); }, [render]);
 
@@ -67,9 +70,10 @@ export default function Home() {
     window.setTimeout(() => setCopied(false), 1400);
   };
 
-  const reset = () => { setHead(null); setThing(null); setCaption(""); };
+  const reset = () => { setHead(null); setMustache(false); setThing(null); setCaption(""); };
   const shuffle = () => {
     setHead(heads[Math.floor(Math.random() * heads.length)]);
+    setMustache(Math.random() >= 0.5);
     setThing(things[Math.floor(Math.random() * things.length)]);
   };
 
@@ -94,7 +98,7 @@ export default function Home() {
             <p className="eyebrow">YOUR TINY PORTRAIT STUDIO</p>
             <h2>Make Pierre <em>yours.</em></h2>
           </div>
-          <p className="intro-copy">Pick a look, hand him a prop, add a line.<br />The mustache stays. Naturally.</p>
+          <p className="intro-copy">Pick a look, hand him a prop, add a line.<br />Mustache optional. Charm inevitable.</p>
         </header>
 
         <div className="workspace">
@@ -118,6 +122,7 @@ export default function Home() {
           </div>
           <nav aria-label="Customizer categories">
             <button className={tab === "head" ? "active" : ""} onClick={() => setTab("head")}>Head</button>
+            <button className={tab === "face" ? "active" : ""} onClick={() => setTab("face")}>Face</button>
             <button className={tab === "thing" ? "active" : ""} onClick={() => setTab("thing")}>Prop</button>
             <button className={tab === "text" ? "active" : ""} onClick={() => setTab("text")}>Text</button>
             <button className="shuffle" onClick={shuffle}>↻ Shuffle</button>
@@ -132,6 +137,16 @@ export default function Home() {
                   </span>
                 </button>
               ))}
+            </div>
+          )}
+          {tab === "face" && (
+            <div className="asset-grid">
+              <button className={mustache ? "selected" : ""} onClick={() => setMustache(!mustache)} aria-label="Toggle Pierre's pencil mustache">
+                <span className="trait-preview">
+                  <NextImage src={baseCharacter} alt="" fill sizes="140px" unoptimized />
+                  <NextImage src={mustacheTrait} alt="" fill sizes="140px" unoptimized />
+                </span>
+              </button>
             </div>
           )}
           {tab === "thing" && (
