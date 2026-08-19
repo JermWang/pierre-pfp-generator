@@ -15,7 +15,8 @@ test("Pierre and every generator layer share the 500x500 canvas", async () => {
   const heads = await readdir(new URL("heads-pierre-v3/", characterRoot));
   const things = await readdir(new URL("things-pierre-v3/", characterRoot));
   const assets = [
-    new URL("base-pierre-original.png", characterRoot),
+    new URL("base-pierre-bingo.png", characterRoot),
+    new URL("faces/face-mustache-bingo.png", characterRoot),
     ...heads.map((name) => new URL(`heads-pierre-v3/${name}`, characterRoot)),
     ...things.map((name) => new URL(`things-pierre-v3/${name}`, characterRoot)),
   ];
