@@ -27,7 +27,7 @@ npm run build
 
 ## Character asset contract
 
-- Base: `public/characters/base-pierre.png` (500x500)
+- Base: `public/characters/base-pierre-v2.png` (500x500)
 - Head layers: `public/characters/heads/` (500x500 transparent PNGs)
 - Prop layers: `public/characters/things/` (500x500 transparent PNGs)
 - Layer order: Pierre base -> head -> prop -> caption

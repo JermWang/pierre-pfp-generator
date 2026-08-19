@@ -9,7 +9,7 @@ const heads = [
 ];
 const things = ["1","2","4","5","6","7","8","9","10","11","12","13","14","15"];
 const colors = ["#232323", "#f6ead2", "#e8903d"];
-const baseCharacter = "/characters/base-pierre.png";
+const baseCharacter = "/characters/base-pierre-v2.png";
 
 function loadImage(src: string) {
   return new Promise<HTMLImageElement>((resolve, reject) => {
