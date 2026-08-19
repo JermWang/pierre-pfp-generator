@@ -12,18 +12,18 @@ async function pngSize(url) {
 
 test("Pierre and every generator layer share the 500x500 canvas", async () => {
   const characterRoot = new URL("../public/characters/", import.meta.url);
-  const heads = await readdir(new URL("heads-pierre/", characterRoot));
+  const heads = await readdir(new URL("heads-pierre-v3/", characterRoot));
   const faces = await readdir(new URL("faces/", characterRoot));
-  const things = await readdir(new URL("things-pierre/", characterRoot));
+  const things = await readdir(new URL("things-pierre-v3/", characterRoot));
   const assets = [
-    new URL("base-pierre-v4.png", characterRoot),
-    ...heads.map((name) => new URL(`heads-pierre/${name}`, characterRoot)),
+    new URL("base-pierre-v5.png", characterRoot),
+    ...heads.map((name) => new URL(`heads-pierre-v3/${name}`, characterRoot)),
     ...faces.map((name) => new URL(`faces/${name}`, characterRoot)),
-    ...things.map((name) => new URL(`things-pierre/${name}`, characterRoot)),
+    ...things.map((name) => new URL(`things-pierre-v3/${name}`, characterRoot)),
   ];
 
   assert.equal(heads.length, 26);
-  assert.deepEqual(faces, ["face-mustache.png"]);
+  assert.deepEqual(faces, ["face-mustache-v2.png"]);
   assert.equal(things.length, 14);
   for (const asset of assets) {
     assert.deepEqual(await pngSize(asset), { width: 500, height: 500 }, asset.pathname);
@@ -37,4 +37,9 @@ test("the product surface no longer references the retired monkey brand", async 
     assert.doesNotMatch(source, /rondo|base-monkey|the monkey/i, file);
     assert.doesNotMatch(source, /wonky/i, file);
   }
+});
+
+test("the product surface includes the exact Pierre contract address", async () => {
+  const source = await readFile(new URL("app/page.tsx", root), "utf8");
+  assert.match(source, /9k5iJ5NAqeYagHVEha21vcWLzJPm4d2tnKGNeJq8pump/);
 });

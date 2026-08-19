@@ -9,8 +9,9 @@ const heads = [
 ];
 const things = ["1","2","4","5","6","7","8","9","10","11","12","13","14","15"];
 const colors = ["#232323", "#f6ead2", "#e8903d"];
-const baseCharacter = "/characters/base-pierre-v4.png";
-const mustacheTrait = "/characters/faces/face-mustache.png";
+const baseCharacter = "/characters/base-pierre-v5.png";
+const mustacheTrait = "/characters/faces/face-mustache-v2.png";
+const contractAddress = "9k5iJ5NAqeYagHVEha21vcWLzJPm4d2tnKGNeJq8pump";
 
 function loadImage(src: string) {
   return new Promise<HTMLImageElement>((resolve, reject) => {
@@ -30,6 +31,7 @@ export default function Home() {
   const [caption, setCaption] = useState("");
   const [ink, setInk] = useState("#000000");
   const [copied, setCopied] = useState(false);
+  const [contractCopied, setContractCopied] = useState(false);
 
   const render = useCallback(async () => {
     const canvas = canvasRef.current;
@@ -39,9 +41,9 @@ export default function Home() {
     ctx.clearRect(0, 0, 500, 500);
     const base = await loadImage(baseCharacter);
     ctx.drawImage(base, 0, 0, 500, 500);
-    if (head) ctx.drawImage(await loadImage(`/characters/heads-pierre/head-${head}.png`), 0, 0, 500, 500);
+    if (head) ctx.drawImage(await loadImage(`/characters/heads-pierre-v3/head-${head}.png`), 0, 0, 500, 500);
     if (mustache) ctx.drawImage(await loadImage(mustacheTrait), 0, 0, 500, 500);
-    if (thing) ctx.drawImage(await loadImage(`/characters/things-pierre/thing-${thing}.png`), 0, 0, 500, 500);
+    if (thing) ctx.drawImage(await loadImage(`/characters/things-pierre-v3/thing-${thing}.png`), 0, 0, 500, 500);
     if (caption.trim()) {
       ctx.font = "40px 'Courier New', Courier, monospace";
       ctx.textAlign = "center";
@@ -68,6 +70,13 @@ export default function Home() {
     await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
     setCopied(true);
     window.setTimeout(() => setCopied(false), 1400);
+  };
+
+  const copyContract = async () => {
+    if (!navigator.clipboard) return;
+    await navigator.clipboard.writeText(contractAddress);
+    setContractCopied(true);
+    window.setTimeout(() => setContractCopied(false), 1400);
   };
 
   const reset = () => { setHead(null); setMustache(false); setThing(null); setCaption(""); };
@@ -101,6 +110,12 @@ export default function Home() {
           <p className="intro-copy">Pick a look, hand him a prop, add a line.<br />Mustache optional. Charm inevitable.</p>
         </header>
 
+        <button className="contract-strip" onClick={() => void copyContract()} aria-label="Copy Pierre contract address">
+          <span>CONTRACT ADDRESS / SOLANA</span>
+          <code>{contractAddress}</code>
+          <b>{contractCopied ? "COPIED!" : "COPY CA ↗"}</b>
+        </button>
+
         <div className="workspace">
           <div className="preview-wrap">
             <span className="preview-label">LIVE FROM THE ICE</span>
@@ -133,7 +148,7 @@ export default function Home() {
                 <button key={id} className={head === id ? "selected" : ""} onClick={() => setHead(head === id ? null : id)} aria-label={`Pierre head style ${id}`}>
                   <span className="trait-preview">
                     <NextImage src={baseCharacter} alt="" fill sizes="140px" unoptimized />
-                    <NextImage src={`/characters/heads-pierre/head-${id}.png`} alt="" fill sizes="140px" unoptimized />
+                    <NextImage src={`/characters/heads-pierre-v3/head-${id}.png`} alt="" fill sizes="140px" unoptimized />
                   </span>
                 </button>
               ))}
@@ -155,7 +170,7 @@ export default function Home() {
                 <button key={id} className={thing === id ? "selected" : ""} onClick={() => setThing(thing === id ? null : id)} aria-label={`Pierre prop ${id}`}>
                   <span className="trait-preview">
                     <NextImage src={baseCharacter} alt="" fill sizes="140px" unoptimized />
-                    <NextImage src={`/characters/things-pierre/thing-${id}.png`} alt="" fill sizes="140px" unoptimized />
+                    <NextImage src={`/characters/things-pierre-v3/thing-${id}.png`} alt="" fill sizes="140px" unoptimized />
                   </span>
                 </button>
               ))}
@@ -183,15 +198,15 @@ export default function Home() {
         </div>
         <div className="rail-cards">
           <div className="rail-card">
-            <i className="rail-icon"><NextImage src={baseCharacter} alt="" fill sizes="76px" unoptimized /><NextImage src="/characters/heads-pierre/head-01.png" alt="" fill sizes="76px" unoptimized /></i>
+            <i className="rail-icon"><NextImage src={baseCharacter} alt="" fill sizes="76px" unoptimized /><NextImage src="/characters/heads-pierre-v3/head-01.png" alt="" fill sizes="76px" unoptimized /></i>
             <span>Made<br />by hand</span>
           </div>
           <div className="rail-card">
-            <i className="rail-icon"><NextImage src={baseCharacter} alt="" fill sizes="76px" unoptimized /><NextImage src="/characters/heads-pierre/head-05.png" alt="" fill sizes="76px" unoptimized /></i>
+            <i className="rail-icon"><NextImage src={baseCharacter} alt="" fill sizes="76px" unoptimized /><NextImage src="/characters/heads-pierre-v3/head-05.png" alt="" fill sizes="76px" unoptimized /></i>
             <span>Dressed<br />for anything</span>
           </div>
           <div className="rail-card">
-            <i className="rail-icon"><NextImage src={baseCharacter} alt="" fill sizes="76px" unoptimized /><NextImage src="/characters/heads-pierre/head-12.png" alt="" fill sizes="76px" unoptimized /></i>
+            <i className="rail-icon"><NextImage src={baseCharacter} alt="" fill sizes="76px" unoptimized /><NextImage src="/characters/heads-pierre-v3/head-12.png" alt="" fill sizes="76px" unoptimized /></i>
             <span>Ready<br />to export</span>
           </div>
         </div>

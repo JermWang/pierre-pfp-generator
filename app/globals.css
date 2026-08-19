@@ -138,9 +138,9 @@ h1 span {
   min-width: 0;
   display: grid;
   grid-template-columns: minmax(360px, 1fr) minmax(340px, .94fr);
-  grid-template-areas: "intro intro" "preview controls";
+  grid-template-areas: "intro intro" "contract contract" "preview controls";
   align-content: start;
-  gap: 38px 46px;
+  gap: 28px 46px;
   padding: 48px 46px 76px;
 }
 
@@ -180,6 +180,55 @@ h2 em {
   flex: 0 0 275px;
   margin: 0 0 3px;
   font: 700 15px/1.45 var(--font-mono), monospace;
+}
+
+.contract-strip {
+  grid-area: contract;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 18px;
+  padding: 13px 16px;
+  border: 3px solid var(--ink);
+  color: var(--ink);
+  background: var(--cream);
+  box-shadow: 6px 6px 0 var(--ice);
+  cursor: pointer;
+  text-align: left;
+  transform: rotate(-.25deg);
+  transition: transform .14s ease, box-shadow .14s ease, background .14s ease;
+}
+
+.contract-strip:hover {
+  background: white;
+  box-shadow: 8px 8px 0 var(--orange);
+  transform: translate(-2px, -2px) rotate(0);
+}
+
+.contract-strip:active { transform: translate(0); box-shadow: none; }
+
+.contract-strip span,
+.contract-strip b {
+  font: 800 10px/1 var(--font-mono), monospace;
+  letter-spacing: .1em;
+  white-space: nowrap;
+}
+
+.contract-strip span { color: var(--ice-dark); }
+
+.contract-strip code {
+  min-width: 0;
+  overflow: hidden;
+  font: 700 13px/1.2 var(--font-mono), monospace;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contract-strip b {
+  padding: 8px 10px;
+  color: white;
+  background: var(--ink);
 }
 
 .workspace { grid-area: preview; width: 100%; min-width: 0; }
@@ -572,7 +621,7 @@ a:focus-visible {
   .generator {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-areas: "intro" "preview" "controls";
+    grid-template-areas: "intro" "contract" "preview" "controls";
     gap: 34px;
     padding: 36px 19px 66px;
   }
@@ -580,6 +629,9 @@ a:focus-visible {
   .generator-head { display: block; }
   h2 { font-size: clamp(44px, 14vw, 68px); }
   .intro-copy { margin-top: 25px; font-size: 13px; }
+  .contract-strip { grid-template-columns: 1fr auto; gap: 10px 14px; }
+  .contract-strip span { grid-column: 1 / -1; }
+  .contract-strip code { font-size: 11px; }
   .preview-wrap { box-shadow: 9px 9px 0 var(--orange); }
   .actions { grid-template-columns: 1fr 1fr; }
   .actions .primary { grid-column: 1 / -1; }

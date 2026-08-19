@@ -14,12 +14,12 @@ export const metadata: Metadata = {
   title: "Pierre the Penguin — PFP Generator",
   description: "Dress up Pierre, add a caption, and download your own Pierre the Penguin PFP.",
   icons: {
-    icon: [{ url: "/favicon.png?v=3", type: "image/png", sizes: "512x512" }],
-    shortcut: "/favicon.png?v=3",
-    apple: "/favicon.png?v=3",
+    icon: [{ url: "/favicon.png?v=4", type: "image/png", sizes: "512x512" }],
+    shortcut: "/favicon.png?v=4",
+    apple: "/favicon.png?v=4",
   },
-  openGraph: { title: "Pierre the Penguin", description: "Make your Pierre.", images: [{ url: "/og.png?v=4", width: 2172, height: 724, alt: "Pierre the Penguin on a crooked polar coast" }] },
-  twitter: { card: "summary_large_image", title: "Pierre the Penguin", description: "Make your Pierre.", images: ["/og.png?v=4"] },
+  openGraph: { title: "Pierre the Penguin", description: "Make your Pierre.", images: [{ url: "/og.png?v=5", width: 2172, height: 724, alt: "Pierre the Penguin on a crooked polar coast" }] },
+  twitter: { card: "summary_large_image", title: "Pierre the Penguin", description: "Make your Pierre.", images: ["/og.png?v=5"] },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
