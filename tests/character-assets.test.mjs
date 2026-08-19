@@ -32,5 +32,6 @@ test("the product surface no longer references the retired monkey brand", async 
   for (const file of files) {
     const source = await readFile(new URL(file, root), "utf8");
     assert.doesNotMatch(source, /rondo|base-monkey|the monkey/i, file);
+    assert.doesNotMatch(source, /wonky/i, file);
   }
 });

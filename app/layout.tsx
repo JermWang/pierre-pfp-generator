@@ -11,15 +11,15 @@ export const metadata: Metadata = {
       ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
       : "http://localhost:3000",
   ),
-  title: "Pierre the Wonky Penguin — PFP Generator",
-  description: "Dress up Pierre, add a caption, and download a wonderfully wonky penguin PFP.",
+  title: "Pierre the Penguin — PFP Generator",
+  description: "Dress up Pierre, add a caption, and download your own Pierre the Penguin PFP.",
   icons: {
     icon: [{ url: "/favicon.png?v=1", type: "image/png", sizes: "512x512" }],
     shortcut: "/favicon.png?v=1",
     apple: "/favicon.png?v=1",
   },
-  openGraph: { title: "Pierre the Wonky Penguin", description: "Make your Pierre.", images: [{ url: "/og.png?v=1", width: 2172, height: 724, alt: "Pierre the wonky penguin on a crooked polar coast" }] },
-  twitter: { card: "summary_large_image", title: "Pierre the Wonky Penguin", description: "Make your Pierre.", images: ["/og.png?v=1"] },
+  openGraph: { title: "Pierre the Penguin", description: "Make your Pierre.", images: [{ url: "/og.png?v=2", width: 2172, height: 724, alt: "Pierre the Penguin on a crooked polar coast" }] },
+  twitter: { card: "summary_large_image", title: "Pierre the Penguin", description: "Make your Pierre.", images: ["/og.png?v=2"] },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

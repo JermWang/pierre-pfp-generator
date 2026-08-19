@@ -79,7 +79,7 @@ export default function Home() {
         <div className="brand-copy">
           <div className="brand-lockup">
             <small>LE PFP ATELIER</small>
-            <h1>pierre&nbsp; <span>the wonky</span>&nbsp; penguin</h1>
+            <h1>pierre&nbsp; <span>the</span>&nbsp; penguin</h1>
           </div>
           <div className="swatches" aria-hidden="true">
             {colors.map((color) => <i key={color} style={{ background: color }} />)}
@@ -169,7 +169,7 @@ export default function Home() {
         <div className="rail-cards">
           <div className="rail-card">
             <i className="rail-icon"><NextImage src={baseCharacter} alt="" fill sizes="76px" unoptimized /><NextImage src="/characters/heads/head-01.png" alt="" fill sizes="76px" unoptimized /></i>
-            <span>Wonky<br />by design</span>
+            <span>Made<br />by hand</span>
           </div>
           <div className="rail-card">
             <i className="rail-icon"><NextImage src={baseCharacter} alt="" fill sizes="76px" unoptimized /><NextImage src="/characters/heads/head-05.png" alt="" fill sizes="76px" unoptimized /></i>

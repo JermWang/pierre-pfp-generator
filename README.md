@@ -1,8 +1,8 @@
-# Pierre the Wonky Penguin
+# Pierre the Penguin
 
-A hand-drawn PFP generator for Pierre: a charmingly wonky penguin with a tiny
-pencil mustache. Mix head styles and props, add a caption, then copy or download
-the finished 500x500 PNG.
+A hand-drawn PFP generator for Pierre the Penguin, complete with his tiny pencil
+mustache. Mix head styles and props, add a caption, then copy or download the
+finished 500x500 PNG.
 
 Pierre deliberately keeps the original character canvas, pose, and attachment
 points so every layered generator asset remains aligned.
