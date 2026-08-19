@@ -24,15 +24,12 @@ def layer(path: Path) -> Image.Image:
     return Image.open(path).convert("RGBA")
 
 
-base = layer(CHARACTERS / "base-pierre-v5.png")
-mustache = layer(CHARACTERS / "faces" / "face-mustache-v2.png")
+base = layer(CHARACTERS / "base-pierre-original.png")
 frames: list[Image.Image] = []
 
-for head_id, thing_id, has_mustache in COMBINATIONS:
+for head_id, thing_id, _has_mustache in COMBINATIONS:
     frame = base.copy()
     frame.alpha_composite(layer(CHARACTERS / "heads-pierre-v3" / f"head-{head_id}.png"))
-    if has_mustache:
-        frame.alpha_composite(mustache)
     frame.alpha_composite(layer(CHARACTERS / "things-pierre-v3" / f"thing-{thing_id}.png"))
     frames.append(frame.convert("RGB"))
 
