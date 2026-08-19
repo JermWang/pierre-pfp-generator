@@ -28,9 +28,9 @@ npm run build
 ## Character asset contract
 
 - Base: `public/characters/base-pierre-v4.png` (500x500)
-- Head layers: `public/characters/heads/` (500x500 transparent PNGs)
+- Head layers: `public/characters/heads-pierre/` (500x500 transparent PNGs)
 - Face layers: `public/characters/faces/` (500x500 transparent PNGs)
-- Prop layers: `public/characters/things/` (500x500 transparent PNGs)
+- Prop layers: `public/characters/things-pierre/` (500x500 transparent PNGs)
 - Layer order: Pierre base -> head -> face -> prop -> caption
 
 Keep future layers on the same 500x500 canvas without moving Pierre's crown,

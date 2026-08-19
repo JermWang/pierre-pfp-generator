@@ -12,14 +12,14 @@ async function pngSize(url) {
 
 test("Pierre and every generator layer share the 500x500 canvas", async () => {
   const characterRoot = new URL("../public/characters/", import.meta.url);
-  const heads = await readdir(new URL("heads/", characterRoot));
+  const heads = await readdir(new URL("heads-pierre/", characterRoot));
   const faces = await readdir(new URL("faces/", characterRoot));
-  const things = await readdir(new URL("things/", characterRoot));
+  const things = await readdir(new URL("things-pierre/", characterRoot));
   const assets = [
     new URL("base-pierre-v4.png", characterRoot),
-    ...heads.map((name) => new URL(`heads/${name}`, characterRoot)),
+    ...heads.map((name) => new URL(`heads-pierre/${name}`, characterRoot)),
     ...faces.map((name) => new URL(`faces/${name}`, characterRoot)),
-    ...things.map((name) => new URL(`things/${name}`, characterRoot)),
+    ...things.map((name) => new URL(`things-pierre/${name}`, characterRoot)),
   ];
 
   assert.equal(heads.length, 26);

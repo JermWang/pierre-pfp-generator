@@ -39,9 +39,9 @@ export default function Home() {
     ctx.clearRect(0, 0, 500, 500);
     const base = await loadImage(baseCharacter);
     ctx.drawImage(base, 0, 0, 500, 500);
-    if (head) ctx.drawImage(await loadImage(`/characters/heads/head-${head}.png`), 0, 0, 500, 500);
+    if (head) ctx.drawImage(await loadImage(`/characters/heads-pierre/head-${head}.png`), 0, 0, 500, 500);
     if (mustache) ctx.drawImage(await loadImage(mustacheTrait), 0, 0, 500, 500);
-    if (thing) ctx.drawImage(await loadImage(`/characters/things/thing-${thing}.png`), 0, 0, 500, 500);
+    if (thing) ctx.drawImage(await loadImage(`/characters/things-pierre/thing-${thing}.png`), 0, 0, 500, 500);
     if (caption.trim()) {
       ctx.font = "40px 'Courier New', Courier, monospace";
       ctx.textAlign = "center";
@@ -133,7 +133,7 @@ export default function Home() {
                 <button key={id} className={head === id ? "selected" : ""} onClick={() => setHead(head === id ? null : id)} aria-label={`Pierre head style ${id}`}>
                   <span className="trait-preview">
                     <NextImage src={baseCharacter} alt="" fill sizes="140px" unoptimized />
-                    <NextImage src={`/characters/heads/head-${id}.png`} alt="" fill sizes="140px" unoptimized />
+                    <NextImage src={`/characters/heads-pierre/head-${id}.png`} alt="" fill sizes="140px" unoptimized />
                   </span>
                 </button>
               ))}
@@ -155,7 +155,7 @@ export default function Home() {
                 <button key={id} className={thing === id ? "selected" : ""} onClick={() => setThing(thing === id ? null : id)} aria-label={`Pierre prop ${id}`}>
                   <span className="trait-preview">
                     <NextImage src={baseCharacter} alt="" fill sizes="140px" unoptimized />
-                    <NextImage src={`/characters/things/thing-${id}.png`} alt="" fill sizes="140px" unoptimized />
+                    <NextImage src={`/characters/things-pierre/thing-${id}.png`} alt="" fill sizes="140px" unoptimized />
                   </span>
                 </button>
               ))}
@@ -183,15 +183,15 @@ export default function Home() {
         </div>
         <div className="rail-cards">
           <div className="rail-card">
-            <i className="rail-icon"><NextImage src={baseCharacter} alt="" fill sizes="76px" unoptimized /><NextImage src="/characters/heads/head-01.png" alt="" fill sizes="76px" unoptimized /></i>
+            <i className="rail-icon"><NextImage src={baseCharacter} alt="" fill sizes="76px" unoptimized /><NextImage src="/characters/heads-pierre/head-01.png" alt="" fill sizes="76px" unoptimized /></i>
             <span>Made<br />by hand</span>
           </div>
           <div className="rail-card">
-            <i className="rail-icon"><NextImage src={baseCharacter} alt="" fill sizes="76px" unoptimized /><NextImage src="/characters/heads/head-05.png" alt="" fill sizes="76px" unoptimized /></i>
+            <i className="rail-icon"><NextImage src={baseCharacter} alt="" fill sizes="76px" unoptimized /><NextImage src="/characters/heads-pierre/head-05.png" alt="" fill sizes="76px" unoptimized /></i>
             <span>Dressed<br />for anything</span>
           </div>
           <div className="rail-card">
-            <i className="rail-icon"><NextImage src={baseCharacter} alt="" fill sizes="76px" unoptimized /><NextImage src="/characters/heads/head-12.png" alt="" fill sizes="76px" unoptimized /></i>
+            <i className="rail-icon"><NextImage src={baseCharacter} alt="" fill sizes="76px" unoptimized /><NextImage src="/characters/heads-pierre/head-12.png" alt="" fill sizes="76px" unoptimized /></i>
             <span>Ready<br />to export</span>
           </div>
         </div>
