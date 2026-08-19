@@ -1,0 +1,27 @@
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+
+const geist = Geist({ variable: "--font-geist", subsets: ["latin"] });
+const mono = Geist_Mono({ variable: "--font-mono", subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : "http://localhost:3000",
+  ),
+  title: "Pierre the Wonky Penguin — PFP Generator",
+  description: "Dress up Pierre, add a caption, and download a wonderfully wonky penguin PFP.",
+  icons: {
+    icon: [{ url: "/favicon.png?v=1", type: "image/png", sizes: "512x512" }],
+    shortcut: "/favicon.png?v=1",
+    apple: "/favicon.png?v=1",
+  },
+  openGraph: { title: "Pierre the Wonky Penguin", description: "Make your Pierre.", images: [{ url: "/og.png?v=1", width: 2172, height: 724, alt: "Pierre the wonky penguin on a crooked polar coast" }] },
+  twitter: { card: "summary_large_image", title: "Pierre the Wonky Penguin", description: "Make your Pierre.", images: ["/og.png?v=1"] },
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return <html lang="en"><body className={`${geist.variable} ${mono.variable}`}>{children}</body></html>;
+}
